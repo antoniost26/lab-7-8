@@ -1,0 +1,10 @@
+# ninja log v5
+38	590	6707162283014649	CMakeFiles/lab_7_8.dir/Domain/Vector.cpp.obj	f8604b7c9a8f1a08
+1	654	6707162283594633	CMakeFiles/lab_7_8.dir/Domain/Entity.cpp.obj	a0c50d4d75a5c13c
+21	656	6707162283644661	CMakeFiles/lab_7_8.dir/main.cpp.obj	24e7abf60d0d69c4
+3	593	6707162481377416	CMakeFiles/lab_7_8.dir/Repository/EntityRepository.cpp.obj	b777dcbfd4547760
+3	472	6707162582430577	CMakeFiles/lab_7_8.dir/Service/EntityService.cpp.obj	38800283299f921f
+473	758	6707162585200571	lab_7_8.exe	9b06301ab6c42ebe
+20	421	6707163187031537	CMakeFiles/lab_7_8.dir/Service/EntityService.cpp.obj	38800283299f921f
+3	423	6707163187051556	CMakeFiles/lab_7_8.dir/Repository/EntityRepository.cpp.obj	b777dcbfd4547760
+424	561	6707163188391523	lab_7_8.exe	9b06301ab6c42ebe
