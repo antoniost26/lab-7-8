@@ -10,19 +10,16 @@
 
 template <class T> class EntityRepository {
 private:
-    int size;
-    int capacity;
-    static const int DEFAULT_CAPACITY = 10;
-    static const int BATCH_SIZE = 1024;
-    Vector<Entity> entities;
-    void resize();
+    Vector<T> entities;
 public:
     EntityRepository();
-    EntityRepository(int capacity);
+    explicit EntityRepository(int capacity);
+    EntityRepository(const EntityRepository& other);
+    explicit EntityRepository(const Vector<T>& other);
     ~EntityRepository();
-    void addElem(Entity entity);
+    void addElem(T entity);
     void remove(int index);
-    Entity getAll(int index);
+    Vector<T> getAll(int index);
     int getSize();
     int getCapacity();
 };
