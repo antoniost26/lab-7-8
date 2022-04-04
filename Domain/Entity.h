@@ -11,10 +11,17 @@ private:
     unsigned int id;
 public:
     Entity();
+
     explicit Entity(int id);
+
     Entity(const Entity& other);
+
      ~Entity();
+
+     void setId(int id);
+
      unsigned int getId();
+
 };
 
 #endif //LAB_7_8_ENTITY_H

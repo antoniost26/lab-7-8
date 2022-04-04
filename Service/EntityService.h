@@ -13,11 +13,17 @@ template <class T> class EntityService {
 private:
     EntityRepository<T> repository;
 public:
-    virtual void addEntity(Entity *entity) = 0;
-    virtual void removeEntity(Entity *entity) = 0;
-    virtual void updateEntity(Entity *entity) = 0;
-    virtual void getEntity(Entity *entity) = 0;
-    virtual void getAllEntities() = 0;
+    EntityService();
+
+    explicit EntityService(EntityRepository<T> repository);
+
+    void add(T entity);
+
+    void remove(T entity);
+
+    void update(T entity);
+
+    Vector<T> getAll();
 };
 
 

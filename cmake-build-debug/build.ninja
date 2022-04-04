@@ -73,23 +73,23 @@ build CMakeFiles/lab_7_8.dir/Domain/Entity.cpp.obj: CXX_COMPILER__lab_7_8_Debug 
   OBJECT_DIR = CMakeFiles\lab_7_8.dir
   OBJECT_FILE_DIR = CMakeFiles\lab_7_8.dir\Domain
 
-build CMakeFiles/lab_7_8.dir/Repository/EntityRepository.cpp.obj: CXX_COMPILER__lab_7_8_Debug C$:/Users/Antonio/CLionProjects/lab-7-8/Repository/EntityRepository.cpp || cmake_object_order_depends_target_lab_7_8
-  DEP_FILE = CMakeFiles\lab_7_8.dir\Repository\EntityRepository.cpp.obj.d
-  FLAGS = -g -std=gnu++14
-  OBJECT_DIR = CMakeFiles\lab_7_8.dir
-  OBJECT_FILE_DIR = CMakeFiles\lab_7_8.dir\Repository
-
 build CMakeFiles/lab_7_8.dir/Service/EntityService.cpp.obj: CXX_COMPILER__lab_7_8_Debug C$:/Users/Antonio/CLionProjects/lab-7-8/Service/EntityService.cpp || cmake_object_order_depends_target_lab_7_8
   DEP_FILE = CMakeFiles\lab_7_8.dir\Service\EntityService.cpp.obj.d
   FLAGS = -g -std=gnu++14
   OBJECT_DIR = CMakeFiles\lab_7_8.dir
   OBJECT_FILE_DIR = CMakeFiles\lab_7_8.dir\Service
 
-build CMakeFiles/lab_7_8.dir/Domain/Vector.cpp.obj: CXX_COMPILER__lab_7_8_Debug C$:/Users/Antonio/CLionProjects/lab-7-8/Domain/Vector.cpp || cmake_object_order_depends_target_lab_7_8
-  DEP_FILE = CMakeFiles\lab_7_8.dir\Domain\Vector.cpp.obj.d
+build CMakeFiles/lab_7_8.dir/UserInterface/UserInterface.cpp.obj: CXX_COMPILER__lab_7_8_Debug C$:/Users/Antonio/CLionProjects/lab-7-8/UserInterface/UserInterface.cpp || cmake_object_order_depends_target_lab_7_8
+  DEP_FILE = CMakeFiles\lab_7_8.dir\UserInterface\UserInterface.cpp.obj.d
   FLAGS = -g -std=gnu++14
   OBJECT_DIR = CMakeFiles\lab_7_8.dir
-  OBJECT_FILE_DIR = CMakeFiles\lab_7_8.dir\Domain
+  OBJECT_FILE_DIR = CMakeFiles\lab_7_8.dir\UserInterface
+
+build CMakeFiles/lab_7_8.dir/EntityValidator/EntityValidator.cpp.obj: CXX_COMPILER__lab_7_8_Debug C$:/Users/Antonio/CLionProjects/lab-7-8/EntityValidator/EntityValidator.cpp || cmake_object_order_depends_target_lab_7_8
+  DEP_FILE = CMakeFiles\lab_7_8.dir\EntityValidator\EntityValidator.cpp.obj.d
+  FLAGS = -g -std=gnu++14
+  OBJECT_DIR = CMakeFiles\lab_7_8.dir
+  OBJECT_FILE_DIR = CMakeFiles\lab_7_8.dir\EntityValidator
 
 
 # =============================================================================
@@ -99,7 +99,7 @@ build CMakeFiles/lab_7_8.dir/Domain/Vector.cpp.obj: CXX_COMPILER__lab_7_8_Debug 
 #############################################
 # Link the executable lab_7_8.exe
 
-build lab_7_8.exe: CXX_EXECUTABLE_LINKER__lab_7_8_Debug CMakeFiles/lab_7_8.dir/main.cpp.obj CMakeFiles/lab_7_8.dir/Domain/Entity.cpp.obj CMakeFiles/lab_7_8.dir/Repository/EntityRepository.cpp.obj CMakeFiles/lab_7_8.dir/Service/EntityService.cpp.obj CMakeFiles/lab_7_8.dir/Domain/Vector.cpp.obj
+build lab_7_8.exe: CXX_EXECUTABLE_LINKER__lab_7_8_Debug CMakeFiles/lab_7_8.dir/main.cpp.obj CMakeFiles/lab_7_8.dir/Domain/Entity.cpp.obj CMakeFiles/lab_7_8.dir/Service/EntityService.cpp.obj CMakeFiles/lab_7_8.dir/UserInterface/UserInterface.cpp.obj CMakeFiles/lab_7_8.dir/EntityValidator/EntityValidator.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\lab_7_8.dir

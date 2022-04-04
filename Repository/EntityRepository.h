@@ -12,16 +12,44 @@ template <class T> class EntityRepository {
 private:
     Vector<T> entities;
 public:
-    EntityRepository();
-    explicit EntityRepository(int capacity);
-    EntityRepository(const EntityRepository& other);
-    explicit EntityRepository(const Vector<T>& other);
-    ~EntityRepository();
-    void addElem(T entity);
-    void remove(int index);
-    Vector<T> getAll(int index);
-    int getSize();
-    int getCapacity();
+    ~EntityRepository() = default;
+
+    EntityRepository() {
+        entities = Vector<T>();
+    }
+
+    EntityRepository(const EntityRepository &other) {
+        this->entities = other.entities;
+    }
+
+    explicit EntityRepository(const Vector<T> &other) {
+        this->entities = other;
+    }
+
+    explicit EntityRepository(int capacity) {
+        entities = Vector<T>(capacity);
+    }
+
+    void addElem(T entity) {
+        entities.push_back(entity);
+    }
+
+//template<class T>
+//void EntityRepository<T>::remove(int index) {
+//    entities.erase(index);
+//}
+
+    Vector<T> getAll() {
+        return this->entities;
+    }
+
+    int getSize() {
+        return this->entities.getSize();
+    }
+
+    int getCapacity() {
+        return this->entities.getCapacity();
+    }
 };
 
 
