@@ -9,11 +9,11 @@ void UserInterface::run() {
     std::cout << "Welcome to the User Interface!" << std::endl;
     std::cout << "To view the list of commands, type 'p'" << std::endl;
 
-    char input = 'x';
-    while (input != 'q') {
+    char input;
+    do{
         this->readCommand(input);
         this->runCommand(input);
-    }
+    } while (input != 'q');
 }
 
 void UserInterface::printMenu() {
@@ -44,6 +44,9 @@ void UserInterface::runCommand(char i) {
         }
         case 'p': {
             UserInterface::printMenu();
+            break;
+        }
+        case 'q': {
             break;
         }
         default: {

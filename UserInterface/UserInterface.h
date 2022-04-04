@@ -16,8 +16,6 @@ public:
 
     void run();
 
-    void runTests();
-
     static void printMenu();
 
     void runCommand(char i);
