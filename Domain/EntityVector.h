@@ -2,12 +2,12 @@
 // Created by Antonio on 4/3/2022.
 //
 
-#ifndef LAB_7_8_VECTOR_H
-#define LAB_7_8_VECTOR_H
+#ifndef LAB_7_8_ENTITYVECTOR_H
+#define LAB_7_8_ENTITYVECTOR_H
 
 
 template<class T>
-class Vector {
+class EntityVector {
 private:
     T *data;
     unsigned int size;
@@ -32,7 +32,7 @@ public:
     /**
      * @brief Constructor
      */
-    Vector() {
+    EntityVector() {
         this->size = 0;
         this->capacity = DEFAULT_CAPACITY;
         this->data = new T[capacity];
@@ -41,7 +41,7 @@ public:
     /**
      * @brief Constructs a vector with the given capacity
      */
-    explicit Vector(int capacity) {
+    explicit EntityVector(int capacity) {
         this->size = 0;
         this->capacity = capacity;
         this->data = new T[capacity];
@@ -51,7 +51,7 @@ public:
      * @brief Copy constructor
      * @param other the vector to copy
      */
-    Vector(const Vector &other) {
+    EntityVector(const EntityVector &other) {
         this->size = other.size;
         this->capacity = other.capacity;
         this->data = new T[capacity];
@@ -63,7 +63,7 @@ public:
     /**
      * @brief Destructor
      */
-    ~Vector() {
+    ~EntityVector() {
         delete[] this->data;
     }
 
@@ -71,7 +71,7 @@ public:
      * @brief Copy constructor using = operator
      * @param other the vector to copy
      */
-    Vector<T> &operator=(const Vector<T> &other) {
+    EntityVector<T> &operator=(const EntityVector<T> &other) {
         this->size = other.size;
         this->capacity = other.capacity;
         delete[] this->data;
@@ -123,7 +123,7 @@ public:
      */
     T pop_back() {
         if (size == 0) {
-            throw std::out_of_range("Vector is empty");
+            throw std::out_of_range("EntityVector is empty");
         }
         T value = data[size - 1];
         this->erase(size - 1);
@@ -180,7 +180,7 @@ public:
      * @param vector the vector to print
      * @return the ostream
      */
-    friend std::ostream &operator<<(std::ostream &os, const Vector<T> &vector) {
+    friend std::ostream &operator<<(std::ostream &os, const EntityVector<T> &vector) {
         for (int i = 0; i < vector.size; i++) {
             os << i << ")" << vector.data[i] << std::endl;
         }
@@ -189,4 +189,4 @@ public:
 };
 
 
-#endif //LAB_7_8_VECTOR_H
+#endif //LAB_7_8_ENTITYVECTOR_H

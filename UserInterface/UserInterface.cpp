@@ -62,7 +62,7 @@ void UserInterface::runCommand(char i) {
             break;
         }
         case 'l': {
-            Vector<Apartment> entities = this->apartmentService.getAll();
+            EntityVector<Apartment> entities = this->apartmentService.getAll();
             std::cout << entities;
             break;
         }

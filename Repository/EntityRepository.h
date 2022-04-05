@@ -1,7 +1,7 @@
 //
 // Created by Antonio on 4/3/2022.
 //
-#include "../Domain/Vector.h"
+#include "../Domain/EntityVector.h"
 #include "../Domain/Apartment.h"
 #include <random>
 
@@ -11,24 +11,24 @@
 
 template <class T> class EntityRepository {
 private:
-    Vector<T> entities;
+    EntityVector<T> entities;
 public:
     ~EntityRepository() = default;
 
     EntityRepository() {
-        entities = Vector<T>();
+        entities = EntityVector<T>();
     }
 
     EntityRepository(const EntityRepository &other) {
         this->entities = other.entities;
     }
 
-    explicit EntityRepository(const Vector<T> &other) {
+    explicit EntityRepository(const EntityVector<T> &other) {
         this->entities = other;
     }
 
     explicit EntityRepository(int capacity) {
-        entities = Vector<T>(capacity);
+        entities = EntityVector<T>(capacity);
     }
 
     void addElem(T entity) {
@@ -44,7 +44,7 @@ public:
         entities.insert(index, entity);
     }
 
-    Vector<T> getAll() {
+    EntityVector<T> getAll() {
         return this->entities;
     }
 

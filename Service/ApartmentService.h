@@ -25,7 +25,7 @@ public:
 
     void edit(int index, Apartment entity);
 
-    Vector<Apartment> getAll();
+    EntityVector<Apartment> getAll();
 
     void generate(int numberOfGenerations);
 };

@@ -16,8 +16,8 @@ void ApartmentService::remove(int index) {
     this->repository.remove(index);
 }
 
-Vector<Apartment> ApartmentService::getAll() {
-    Vector<Apartment> apartments = this->repository.getAll();
+EntityVector<Apartment> ApartmentService::getAll() {
+    EntityVector<Apartment> apartments = this->repository.getAll();
     return apartments;
 }
 
@@ -35,7 +35,7 @@ void ApartmentService::generate(int numberOfGenerations) {
 }
 
 Apartment ApartmentService::find(int apartmentNumber) {
-    Vector<Apartment> apartments = this->repository.getAll();
+    EntityVector<Apartment> apartments = this->repository.getAll();
     for (int i = 0; i < apartments.getSize(); i++) {
         if (apartments[i].getApartmentNumber() == apartmentNumber) {
             return apartments[i];
