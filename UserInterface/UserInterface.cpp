@@ -22,28 +22,58 @@ void UserInterface::printMenu() {
     std::cout << "d - Delete an entity" << std::endl;
     std::cout << "e - Edit an entity" << std::endl;
     std::cout << "l - List all entities" << std::endl;
+    std::cout << "g - Generate entities" << std::endl;
+    std::cout << "p - Print the list of commands" << std::endl;
+    std::cout << "q - Quit" << std::endl;
 }
 
 void UserInterface::runCommand(char i) {
     switch (i) {
         case 'a': {
-            std::cout << "You entered 'a'" << std::endl;
+            Apartment apartment;
+            std::cin >> apartment;
+            this->apartmentService.add(apartment);
             break;
         }
-        case 'r': {
-            std::cout << "You entered 'r'" << std::endl;
-            break;
-        }
-        case 'u': {
-            std::cout << "You entered 'u'" << std::endl;
+        case 'e': {
+            try {
+                int id;
+                Apartment newApartment;
+                std::cout << "Enter the index of the entity to edit: ";
+                std::cin >> id;
+                std::cin >> newApartment;
+                this->apartmentService.edit(id, newApartment);
+            }
+            catch (std::out_of_range &e) {
+                std::cout << e.what() << std::endl;
+            }
             break;
         }
         case 'd': {
-            std::cout << "You entered 'd'" << std::endl;
+            try {
+                int id;
+                std::cout << "Enter the index of the entity to delete: ";
+                std::cin >> id;
+                this->apartmentService.remove(id);
+            }
+            catch (std::out_of_range& e) {
+                std::cout << e.what() << std::endl;
+            }
+            break;
+        }
+        case 'l': {
+            Vector<Apartment> entities = this->apartmentService.getAll();
+            std::cout << entities;
             break;
         }
         case 'p': {
             UserInterface::printMenu();
+            break;
+        }
+        case 'g': {
+            int numberOfEntities;
+            std::cout << "Enter the number of entities to generate: "; std::cin >> numberOfEntities;
+            this->apartmentService.generate(numberOfEntities);
             break;
         }
         case 'q': {

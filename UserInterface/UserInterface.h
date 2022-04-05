@@ -7,10 +7,12 @@
 
 
 #include "../Tests/Test.h"
+#include "../Domain/Apartment.h"
+#include "../Service/ApartmentService.h"
 
 class UserInterface {
 private:
-    EntityRepository<Entity> repo;
+    ApartmentService apartmentService;
 public:
     UserInterface();
 

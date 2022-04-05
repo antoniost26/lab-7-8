@@ -2,7 +2,8 @@
 // Created by Antonio on 4/3/2022.
 //
 #include "../Domain/Vector.h"
-#include "../Domain/Entity.h"
+#include "../Domain/Apartment.h"
+#include <random>
 
 #ifndef LAB_7_8_ENTITYREPOSITORY_H
 #define LAB_7_8_ENTITYREPOSITORY_H
@@ -34,10 +35,14 @@ public:
         entities.push_back(entity);
     }
 
-//template<class T>
-//void EntityRepository<T>::remove(int index) {
-//    entities.erase(index);
-//}
+    void remove(int index) {
+        entities.erase(index);
+    }
+
+    void edit (int index, T entity) {
+        entities.erase(index);
+        entities.insert(index, entity);
+    }
 
     Vector<T> getAll() {
         return this->entities;

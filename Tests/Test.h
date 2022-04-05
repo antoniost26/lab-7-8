@@ -7,28 +7,28 @@
 #include <cassert>
 #include <chrono>
 #include <thread>
-#include "../Domain/Entity.h"
+#include "../Domain/Apartment.h"
 #include "../Repository/EntityRepository.h"
 
 class Test {
 public:
     static void testRepository() {
-        EntityRepository<Entity> repo;
+        EntityRepository<Apartment> repo;
         assert(repo.getSize() == 0);
         assert(repo.getAll().getSize() == 0);
-        repo.addElem(Entity(1));
+        repo.addElem(Apartment(1));
         assert(repo.getSize() == 1);
         assert(repo.getAll().getSize() == 1);
         assert(repo.getCapacity() == 10);
-        repo.addElem(Entity(2));
+        repo.addElem(Apartment(2));
         assert(repo.getSize() == 2);
         assert(repo.getAll().getSize() == 2);
         assert(repo.getCapacity() == 10);
-        EntityRepository<Entity> repo2(repo);
+        EntityRepository<Apartment> repo2(repo);
         assert(repo2.getSize() == 2);
         assert(repo2.getAll().getSize() == 2);
         assert(repo2.getCapacity() == 10);
-        repo2.addElem(Entity(3));
+        repo2.addElem(Apartment(3));
         assert(repo2.getSize() == 3);
         assert(repo2.getAll().getSize() == 3);
         assert(repo2.getCapacity() == 10);
@@ -39,12 +39,12 @@ public:
     }
 
     static void testEntity() {
-        Entity entity;
-        assert(entity.getId() == 0);
+        Apartment entity;
+        assert(entity.getApartmentNumber() == 0);
         entity.setId(1);
-        assert(entity.getId() == 1);
+        assert(entity.getApartmentNumber() == 1);
         entity.setId(2);
-        assert(entity.getId() == 2);
+        assert(entity.getApartmentNumber() == 2);
     }
 
     static void testAll() {
