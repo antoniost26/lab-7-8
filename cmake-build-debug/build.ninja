@@ -67,8 +67,8 @@ build CMakeFiles/lab_7_8.dir/main.cpp.obj: CXX_COMPILER__lab_7_8_Debug C$:/Users
   OBJECT_DIR = CMakeFiles\lab_7_8.dir
   OBJECT_FILE_DIR = CMakeFiles\lab_7_8.dir
 
-build CMakeFiles/lab_7_8.dir/Domain/Apartment.cpp.obj: CXX_COMPILER__lab_7_8_Debug C$:/Users/Antonio/CLionProjects/lab-7-8/Domain/Apartment.cpp || cmake_object_order_depends_target_lab_7_8
-  DEP_FILE = CMakeFiles\lab_7_8.dir\Domain\Apartment.cpp.obj.d
+build CMakeFiles/lab_7_8.dir/Domain/ApartmentExpense.cpp.obj: CXX_COMPILER__lab_7_8_Debug C$:/Users/Antonio/CLionProjects/lab-7-8/Domain/ApartmentExpense.cpp || cmake_object_order_depends_target_lab_7_8
+  DEP_FILE = CMakeFiles\lab_7_8.dir\Domain\ApartmentExpense.cpp.obj.d
   FLAGS = -g -std=gnu++14
   OBJECT_DIR = CMakeFiles\lab_7_8.dir
   OBJECT_FILE_DIR = CMakeFiles\lab_7_8.dir\Domain
@@ -93,7 +93,7 @@ build CMakeFiles/lab_7_8.dir/UserInterface/UserInterface.cpp.obj: CXX_COMPILER__
 #############################################
 # Link the executable lab_7_8.exe
 
-build lab_7_8.exe: CXX_EXECUTABLE_LINKER__lab_7_8_Debug CMakeFiles/lab_7_8.dir/main.cpp.obj CMakeFiles/lab_7_8.dir/Domain/Apartment.cpp.obj CMakeFiles/lab_7_8.dir/Service/ApartmentService.cpp.obj CMakeFiles/lab_7_8.dir/UserInterface/UserInterface.cpp.obj
+build lab_7_8.exe: CXX_EXECUTABLE_LINKER__lab_7_8_Debug CMakeFiles/lab_7_8.dir/main.cpp.obj CMakeFiles/lab_7_8.dir/Domain/ApartmentExpense.cpp.obj CMakeFiles/lab_7_8.dir/Service/ApartmentService.cpp.obj CMakeFiles/lab_7_8.dir/UserInterface/UserInterface.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\lab_7_8.dir

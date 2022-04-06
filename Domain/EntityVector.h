@@ -83,6 +83,24 @@ public:
     }
 
     /**
+     * Checks if two vectors have the same size and elements.
+     * @param lhs the left hand side vector
+     * @param rhs the right hand side vector
+     * @return true if the vectors are equal, false otherwise
+     */
+    friend bool operator==(const EntityVector<T> &lhs, const EntityVector<T> &rhs) {
+        if (lhs.size != rhs.size) {
+            return false;
+        }
+        for (int i = 0; i < lhs.size; i++) {
+            if (!(lhs.data[i] == rhs.data[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
      * @brief Access the element at the given index using [] operator
      * @param index the index of the element
      */
@@ -182,7 +200,7 @@ public:
      */
     friend std::ostream &operator<<(std::ostream &os, const EntityVector<T> &vector) {
         for (int i = 0; i < vector.size; i++) {
-            os << i << ")" << vector.data[i] << std::endl;
+            os << vector.data[i] << std::endl;
         }
         return os;
     }
