@@ -7,7 +7,7 @@
 ApartmentExpense::ApartmentExpense() {
     this->apartmentNumber = -1;
     this->sum = 0;
-    this->type = new char[1];
+    this->type = new char[0];
     strcpy(this->type, (char*)"");
 }
 
@@ -41,7 +41,7 @@ std::ostream &operator<<(std::ostream &os, const ApartmentExpense &entity) {
 
 ApartmentExpense::~ApartmentExpense() {
     delete[] this->type;
-    strcpy(this->type, (char*)"");
+    this->type = nullptr;
 }
 
 std::istream& operator>>(std::istream& is, ApartmentExpense& entity) {
@@ -90,6 +90,7 @@ ApartmentExpense &ApartmentExpense::operator=(const ApartmentExpense &other) {
     this->apartmentNumber = other.apartmentNumber;
     this->sum = other.sum;
     delete[] this->type;
+    this->type = nullptr;
     this->type = new char[strlen(other.type) + 1];
     strcpy(this->type, other.type);
     return *this;
