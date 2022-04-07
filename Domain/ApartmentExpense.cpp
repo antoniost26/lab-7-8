@@ -90,7 +90,6 @@ ApartmentExpense &ApartmentExpense::operator=(const ApartmentExpense &other) {
     this->apartmentNumber = other.apartmentNumber;
     this->sum = other.sum;
     delete[] this->type;
-    this->type = nullptr;
     this->type = new char[strlen(other.type) + 1];
     strcpy(this->type, other.type);
     return *this;
