@@ -13,6 +13,9 @@
 
 class Test {
 public:
+    /**
+     * Tests the EntityRepository class
+     */
     static void testRepository() {
         EntityRepository<ApartmentExpense> repo;
         assert(repo.getSize() == 0);
@@ -35,6 +38,9 @@ public:
         assert(repo2.getCapacity() == 10);
     }
 
+    /**
+     * Tests the ApartmentService class
+     */
     static void testService() {
         ApartmentService service;
         assert(service.getAll().getSize() == 0);
@@ -95,6 +101,9 @@ public:
         service.deleteAll();
     }
 
+    /**
+     * Tests the ApartmentExpense class.
+     */
     static void testEntity() {
         ApartmentExpense entity;
         assert(entity.getApartmentNumber() == -1);
@@ -114,12 +123,54 @@ public:
         assert(strcmp(entity.getType(), "electricity") == 0);
     }
 
+    /**
+     * Tests EntityVector class.
+     */
+    static void testEntityVector() {
+        EntityVector<int> vector;
+        assert(vector.getSize() == 0);
+        vector.push_back(1);
+        assert(vector.getSize() == 1);
+        vector.push_back(2);
+        assert(vector.getSize() == 2);
+        vector.push_back(3);
+        assert(vector.getSize() == 3);
+        int a = vector.pop_back();
+        assert(vector.getSize() == 2);
+        assert(a == 3);
+        vector.insert(1, 4);
+        assert(vector.getSize() == 3);
+        vector.erase(1);
+        assert(vector.getSize() == 2);
+        vector.erase(0);
+        assert(vector.getSize() == 1);
+        vector.erase(0);
+        assert(vector.getSize() == 0);
+        vector.push_back(1);
+        vector.push_back(2);
+        vector.push_back(3);
+        vector.push_back(4);
+        vector.push_back(5);
+        EntityVector<int> vector2 = vector;
+        assert(vector2.getSize() == 5);
+        vector.clear();
+        assert(vector.getSize() == 0);
+        assert(vector2.getSize() == 5);
+        vector2.clear();
+        assert(vector2.getSize() == 0);
+    }
+
+    /**
+     * Calls all the tests.
+     */
     static void testAll() {
         std::cout << "Running tests..." << std::endl;
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         Test::testEntity();
+        Test::testEntityVector();
         Test::testRepository();
         Test::testService();
+
         std::cout << "Tests passed!" << std::endl;
     }
 };

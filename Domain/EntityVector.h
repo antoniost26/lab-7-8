@@ -145,7 +145,6 @@ public:
         }
         T value = data[size - 1];
         this->erase(size - 1);
-        size--;
         return value;
     }
 
@@ -176,7 +175,7 @@ public:
         if (index < 0 || index >= size) {
             throw std::out_of_range("Index out of range");
         }
-        for (int i = index; i < size - 1; i++) {
+        for (int i = index; i < size; i++) {
             data[i] = data[i + 1];
         }
         size--;

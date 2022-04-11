@@ -134,6 +134,10 @@ EntityVector<ApartmentExpense> ApartmentService::get(char *filterType, int filte
             if (expenses[i].getSum() == filterValue) {
                 filteredApartments.push_back(expenses[i]);
             }
+        } else if (strcmp(filterType, (char*) "!=") == 0) {
+            if (expenses[i].getSum() != filterValue) {
+                filteredApartments.push_back(expenses[i]);
+            }
         } else {
             throw std::invalid_argument("Invalid filter type! Please use one of the following: >, <, >=, <=, =");
         }
@@ -353,4 +357,9 @@ void ApartmentService::undo() {
     } else {
         throw std::out_of_range("No previous state!");
     }
+}
+
+ApartmentService::ApartmentService(const ApartmentService &apartmentService) {
+    this->repository = apartmentService.repository;
+    this->previousState = apartmentService.previousState;
 }

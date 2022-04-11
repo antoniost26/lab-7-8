@@ -5,5 +5,5 @@ int main() {
     Test::testAll();
     UserInterface console;
     console.run();
-    return 0;
+    return EXIT_SUCCESS;
 }

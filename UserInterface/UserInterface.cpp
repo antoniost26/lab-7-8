@@ -13,7 +13,11 @@ void UserInterface::run() {
         std::cout << "Waiting for input..." << std::endl;
         try {
             std::getline(std::cin, input);
-            this->runCommand(input);
+            if (!input.empty()) {
+                this->runCommand(input);
+            } else {
+                std::cout << "No input detected." << std::endl;
+            }
         }
         catch (std::out_of_range &e) {
             std::cout << "Out of range: " << e.what() << std::endl;
