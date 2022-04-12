@@ -203,6 +203,14 @@ public:
         }
         return os;
     }
+
+    /**
+     * @brief Check if the vector is empty
+     * @return true if the vector is empty, false otherwise
+     */
+    bool empty() {
+        return (this->size == 0);
+    }
 };
 
 

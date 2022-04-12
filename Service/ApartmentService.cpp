@@ -6,12 +6,12 @@
 #include "ApartmentService.h"
 
 ApartmentService::ApartmentService(EntityRepository<ApartmentExpense> repository) {
-    this->previousState = EntityVector<ApartmentExpense>();
+    this->previousState.push_back(EntityVector<ApartmentExpense>());
     this->repository = repository;
 }
 
 void ApartmentService::add(ApartmentExpense entity) {
-    this->previousState = this->repository.getAll();
+    this->previousState.push_back(this->repository.getAll());
     this->repository.addElem(entity);
 }
 
@@ -20,7 +20,7 @@ void ApartmentService::remove(unsigned int apartmentNumber) {
     EntityVector<ApartmentExpense> expenses = this->get(apartmentNumber);
     for (int i = 0; i < expenses.getSize(); i++) {
         if (i >= 0 && i < expenses.getSize()) {
-            this->previousState = this->repository.getAll();
+            this->previousState.push_back(this->repository.getAll());
         }
         this->repository.remove(expenses[i]);
     }
@@ -32,7 +32,6 @@ EntityVector<ApartmentExpense> ApartmentService::getAll() {
 }
 
 ApartmentService::ApartmentService() {
-    this->previousState = EntityVector<ApartmentExpense>();
     this->repository = EntityRepository<ApartmentExpense>();
 }
 
@@ -41,7 +40,7 @@ void ApartmentService::generate(int numberOfGenerations) {
         std::mt19937 mt(rd());
         std::uniform_real_distribution<double> dist(1.0, 100.0);
         std::vector<std::string> allowedTypes = {"water", "electricity", "gas", "warmth", "other"};
-        this->previousState = this->repository.getAll();
+        this->previousState.push_back(this->repository.getAll());
         for (int i = 0; i < numberOfGenerations; i++) {
             this->repository.addElem(ApartmentExpense(
                     floor(dist(mt)),
@@ -69,7 +68,7 @@ void ApartmentService::remove(unsigned int apartmentNumber, char *type) {
     EntityVector<ApartmentExpense> expenses = this->get(apartmentNumber);
     for (int i = 0; i < expenses.getSize(); i++) {
         if (strcmp(expenses[i].getType(), type) == 0) {
-            this->previousState = this->repository.getAll();
+            this->previousState.push_back(this->repository.getAll());
             this->repository.remove(expenses[i]);
         }
     }
@@ -82,7 +81,7 @@ void ApartmentService::remove(char *type) {
     EntityVector<ApartmentExpense> expenses = this->repository.getAll();
     for (int i = 0; i < expenses.getSize(); i++) {
         if (strcmp(expenses[i].getType(), type) == 0) {
-            this->previousState = this->repository.getAll();
+            this->previousState.push_back(this->repository.getAll());
             this->repository.remove(expenses[i]);
         }
     }
@@ -92,7 +91,7 @@ void ApartmentService::remove(unsigned int apartmentNumberBegin, unsigned int ap
     EntityVector<ApartmentExpense> expenses = this->get(apartmentNumberBegin, apartmentNumberEnd);
     for (int i = 0; i < expenses.getSize(); i++) {
         if (expenses[i].getApartmentNumber() >= apartmentNumberBegin && expenses[i].getApartmentNumber() <= apartmentNumberEnd) {
-            this->previousState = this->repository.getAll();
+            this->previousState.push_back(this->repository.getAll());
             this->repository.remove(expenses[i]);
         }
     }
@@ -101,7 +100,7 @@ void ApartmentService::remove(unsigned int apartmentNumberBegin, unsigned int ap
 void ApartmentService::edit(unsigned int apartmentNumber, char *typeToEdit, int newValue) {
     EntityVector<ApartmentExpense> expenses = this->get(apartmentNumber, typeToEdit);
     if(expenses.getSize() > 0) {
-        this->previousState = this->repository.getAll();
+        this->previousState.push_back(this->repository.getAll());
     }
     for (int i = 0; i < expenses.getSize(); i++) {
         ApartmentExpense newExpense = expenses[i];
@@ -146,7 +145,7 @@ EntityVector<ApartmentExpense> ApartmentService::get(char *filterType, int filte
 }
 
 void ApartmentService::deleteAll() {
-    this->previousState = this->repository.getAll();
+    this->previousState.push_back(this->repository.getAll());
     this->repository.deleteAll();
 }
 
@@ -255,9 +254,6 @@ EntityVector<ApartmentExpense> ApartmentService::sort(char *type) {
     for (int i = 0; i < apartments.getSize(); i++) {
         descendingApartments[i] = apartments[apartments.getSize() - i - 1];
     }
-    if (!(this->repository.getAll() == descendingApartments)) {
-        this->previousState = this->repository.getAll();
-    }
     return descendingApartments;
 }
 
@@ -299,7 +295,7 @@ void ApartmentService::filter(char *type) {
     }
 
     if (!(this->repository.getAll() == newApartments.getAll())) {
-        this->previousState = this->repository.getAll();
+        this->previousState.push_back(this->repository.getAll());
         this->repository = newApartments;
     }
 }
@@ -314,7 +310,7 @@ void ApartmentService::filter(int sum) {
     }
 
     if (!(this->repository.getAll() == newApartments.getAll())) {
-        this->previousState = this->repository.getAll();
+        this->previousState.push_back(this->repository.getAll());
         this->repository = newApartments;
     }
 }
@@ -334,10 +330,6 @@ EntityVector<unsigned int> ApartmentService::getApartmentNumbers() {
     return apartmentNumbers;
 }
 
-EntityVector<ApartmentExpense> ApartmentService::getPreviousState() {
-    return this->previousState;
-}
-
 EntityVector<ApartmentExpense>
 ApartmentService::get(unsigned int apartmentNumberBegin, unsigned int apartmentNumberEnd) {
     EntityVector<ApartmentExpense> apartments = this->getAll();
@@ -351,9 +343,8 @@ ApartmentService::get(unsigned int apartmentNumberBegin, unsigned int apartmentN
 }
 
 void ApartmentService::undo() {
-    if (!(this->previousState == EntityVector<ApartmentExpense>())) {
-        this->repository.setAll(this->previousState);
-        this->previousState = EntityVector<ApartmentExpense>();
+    if (!this->previousState.empty()) {
+        this->repository.setAll(this->previousState.pop_back());
     } else {
         throw std::out_of_range("No previous state!");
     }

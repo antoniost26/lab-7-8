@@ -62,3 +62,7 @@
 765	914	6714134197723967	lab_7_8.exe	c495b694464ada3f
 4	655	6714134750275901	CMakeFiles/lab_7_8.dir/UserInterface/UserInterface.cpp.obj	8af53f7aab0122a2
 656	783	6714134751495751	lab_7_8.exe	c495b694464ada3f
+3	743	6714631737601589	CMakeFiles/lab_7_8.dir/main.cpp.obj	24e7abf60d0d69c4
+17	885	6714631739031682	CMakeFiles/lab_7_8.dir/UserInterface/UserInterface.cpp.obj	8af53f7aab0122a2
+14	888	6714631739061643	CMakeFiles/lab_7_8.dir/Service/ApartmentService.cpp.obj	2fe54f85875051de
+888	1063	6714631740781557	lab_7_8.exe	c495b694464ada3f

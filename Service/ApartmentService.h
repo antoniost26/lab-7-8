@@ -12,7 +12,7 @@
 class ApartmentService {
 private:
     EntityRepository<ApartmentExpense> repository;
-    EntityVector<ApartmentExpense> previousState;
+    EntityVector<EntityVector<ApartmentExpense>> previousState;
 public:
     /**
      * Default constructor
@@ -106,12 +106,6 @@ public:
      * @return returns a vector with corresponding apartment expenses.
      */
     EntityVector<ApartmentExpense> get(unsigned int apartmentNumber, char* type);
-
-    /**
-     * Gets previous vector state.
-     * @return previous vector state.
-     */
-    EntityVector<ApartmentExpense> getPreviousState();
 
     /**
      * Edits the sum for all expenses with corresponding apartment number and a given expense type.
